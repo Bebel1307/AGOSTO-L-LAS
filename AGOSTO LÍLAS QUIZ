@@ -1,0 +1,252 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz Agosto Lilás</title>
+
+https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#e9d5ff,#f8f0ff);
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h1,h2,h3{
+text-align:center;
+color:#7b1fa2;
+}
+
+input[type=text]{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:5px;
+margin-top:10px;
+margin-bottom:20px;
+box-sizing:border-box;
+}
+
+.question{
+margin-bottom:25px;
+padding:15px;
+border-left:4px solid #9c27b0;
+background:#faf5ff;
+}
+
+.question p{
+font-weight:bold;
+}
+
+button{
+background:#9c27b0;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:5px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#7b1fa2;
+}
+
+.center{
+text-align:center;
+}
+
+.hidden{
+display:none;
+}
+
+.resultado{
+text-align:center;
+background:#f3e5f5;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.certificado{
+margin-top:30px;
+padding:40px;
+border:10px solid #7b1fa2;
+border-radius:10px;
+background:white;
+text-align:center;
+}
+
+.certificado h1{
+font-size:36px;
+}
+
+.certificado h2{
+color:black;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div id="telaInicial">
+
+<h1>💜 Quiz Agosto Lilás</h1>
+
+<p>
+O Agosto Lilás é uma campanha nacional de conscientização
+e combate à violência contra a mulher.
+</p>
+
+<label><strong>Digite seu nome completo:</strong></label>
+
+<input type="text" id="nomeAluno" placeholder="Nome completo">
+
+<div class="center">
+<button onclick="iniciarQuiz()">Iniciar Quiz</button>
+</div>
+
+</div>
+
+<form id="quiz" class="hidden">
+
+<h2>Questionário</h2>
+
+<div class="question">
+<p>1. O que representa a campanha Agosto Lilás?</p>
+<label><input type="radio" name="q1" value="0"> Preservação ambiental</label><br>
+<label><input type="radio" name="q1" value="1"> Combate à violência contra a mulher</label><br>
+<label><input type="radio" name="q1" value="0"> Vacinação</label><br>
+<label><input type="radio" name="q1" value="0"> Leitura</label>
+</div>
+
+<div class="question">
+<p>2. Em qual mês ocorre o Agosto Lilás?</p>
+<label><input type="radio" name="q2" value="0"> Julho</label><br>
+<label><input type="radio" name="q2" value="1"> Agosto</label><br>
+<label><input type="radio" name="q2" value="0"> Setembro</label><br>
+<label><input type="radio" name="q2" value="0"> Outubro</label>
+</div>
+
+<div class="question">
+<p>3. Qual lei é amplamente divulgada durante a campanha?</p>
+<label><input type="radio" name="q3" value="1"> Lei Maria da Penha</label><br>
+<label><input type="radio" name="q3" value="0"> Lei do Consumidor</label><br>
+<label><input type="radio" name="q3" value="0"> Estatuto da Cidade</label><br>
+<label><input type="radio" name="q3" value="0"> Lei do Trânsito</label>
+</div>
+
+<div class="question">
+<p>4. Um dos objetivos da campanha é:</p>
+<label><input type="radio" name="q4" value="1"> Promover a conscientização</label><br>
+<label><input type="radio" name="q4" value="0"> Promover turismo</label><br>
+<label><input type="radio" name="q4" value="0"> Incentivar redes sociais</label><br>
+<label><input type="radio" name="q4" value="0"> Promover esportes</label>
+</div>
+
+<div class="question">
+<p>5. A violência contra a mulher pode ocorrer:</p>
+<label><input type="radio" name="q5" value="0"> Apenas fisicamente</label><br>
+<label><input type="radio" name="q5" value="0"> Apenas moralmente</label><br>
+<label><input type="radio" name="q5" value="1"> De várias formas</label><br>
+<label><input type="radio" name="q5" value="0"> Apenas financeiramente</label>
+</div>
+
+<div class="question">
+<p>6. Qual é o principal canal de denúncia?</p>
+<label><input type="radio" name="q6" value="0"> 100</label><br>
+<label><input type="radio" name="q6" value="1"> 180</label><br>
+<label><input type="radio" name="q6" value="0"> 188</label><br>
+<label><input type="radio" name="q6" value="0"> 199</label>
+</div>
+
+<div class="question">
+<p>7. A Lei Maria da Penha protege:</p>
+<label><input type="radio" name="q7" value="1"> Mulheres vítimas de violência doméstica</label><br>
+<label><input type="radio" name="q7" value="0"> Empresas</label><br>
+<label><input type="radio" name="q7" value="0"> Crianças exclusivamente</label><br>
+<label><input type="radio" name="q7" value="0"> Animais</label>
+</div>
+
+<div class="question">
+<p>8. Ignorar um caso de violência é correto?</p>
+<label><input type="radio" name="q8" value="0"> Sim</label><br>
+<label><input type="radio" name="q8" value="1"> Não</label>
+</div>
+
+<div class="question">
+<p>9. Conhecer os tipos de violência ajuda na prevenção?</p>
+<label><input type="radio" name="q9" value="1"> Sim</label><br>
+<label><input type="radio" name="q9" value="0"> Não</label>
+</div>
+
+<div class="question">
+<p>10. A conscientização social contribui para:</p>
+<label><input type="radio" name="q10" value="1"> Redução da violência</label><br>
+<label><input type="radio" name="q10" value="0"> Aumento da violência</label><br>
+<label><input type="radio" name="q10" value="0"> Nenhuma mudança</label><br>
+<label><input type="radio" name="q10" value="0"> Fim das leis</label>
+</div>
+
+<div class="center">
+<button type="button" onclick="finalizarQuiz()">
+Finalizar Quiz
+</button>
+</div>
+
+</form>
+
+<div id="resultado" class="hidden"></div>
+
+</div>
+
+<script>
+
+let dataInicio="";
+
+function iniciarQuiz(){
+
+const nome=document.getElementById("nomeAluno").value.trim();
+
+if(nome===""){
+alert("Informe seu nome completo.");
+return;
+}
+
+dataInicio=new Date().toLocaleString("pt-BR");
+
+document.getElementById("telaInicial").classList.add("hidden");
+document.getElementById("quiz").classList.remove("hidden");
+}
+
+function finalizarQuiz(){
+
+let pontos=0;
+
+for(let i=1;i<=10;i++){
+const resp=document.querySelector(`input[name=q${i}]:checked`);
+
+if(resp){
+pontos+=parseInt(resp.value);
+}
+}
+
+const percentual
