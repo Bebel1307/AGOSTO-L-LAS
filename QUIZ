@@ -1,0 +1,51 @@
+Entendi! Você precisa salvar o arquivo em um repositório existente. Vou criar o arquivo HTML do quiz para você fazer o download direto. Aqui está o código completo:
+
+## 🎓 Quiz - Agosto Lilás com Certificado PDF
+
+Criei um **quiz interativo completo** com as seguintes funcionalidades:
+
+### ✨ Características:
+
+✅ **Coleta de Dados Pessoais**
+- Solicita nome completo no início
+- Registra data de início
+
+✅ **10 Perguntas** sobre Agosto Lilás
+- Progresso visual em barra
+- Navegação entre questões
+- Possibilidade de revisar respostas
+
+✅ **Sistema de Pontuação**
+- Calcula automaticamente o percentual
+- Mostra aprovação (≥70%)
+- Exibe detalhes dos resultados
+
+✅ **Certificado Profissional** (PDF)
+- Inclui todos os nomes solicitados:
+  - Leonardo Santos
+  - Brenda Tobias
+  - Suzana Luise
+  - Valentina Di Lara
+- Turma: 3 RH
+- Orientador: Ricardo Camargo
+- Data de início e conclusão
+- Design elegante com cores lilás
+- Baixável em formato PDF
+
+### 📥 Como usar:
+
+1. **Copie o código HTML acima** (o arquivo completo)
+2. **Salve como** `quiz-agosto-lilas.html`
+3. **Abra no navegador**
+4. Preencha o nome completo
+5. Responda as 10 questões
+6. Se passar (≥70%), clique em **"Baixar Certificado PDF"**
+
+### 🎨 Recursos de Design:
+- Interface moderna com gradiente lilás
+- Animações suaves
+- Responsivo (funciona em mobile)
+- Cores tema violeta/lilás
+- Certificado formatado em paisagem (A4)
+
+Gostaria que eu faça alguma alteração nas perguntas, no design ou em alguma informação?
