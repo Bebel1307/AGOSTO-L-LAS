@@ -1,357 +1,237 @@
+index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Quiz Agosto Lilás</title>
 
-https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+2.5.1/jspdf.umd.min.js"></script>
 
 <style>
+
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f4f4;
     margin:0;
     padding:20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#f3e8ff,#ede9fe);
 }
 
 .container{
     max-width:900px;
     margin:auto;
-    background:#fff;
+    background:white;
     padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
 }
 
-h1,h2{
-    color:#8e44ad;
+h1{
     text-align:center;
-}
-
-.question{
-    margin-bottom:20px;
-}
-
-.question p{
-    font-weight:bold;
+    color:#7e22ce;
 }
 
 button{
-    background:#8e44ad;
-    color:#fff;
+    background:#7e22ce;
+    color:white;
     border:none;
     padding:12px 20px;
-    border-radius:5px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:16px;
 }
 
 button:hover{
-    background:#732d91;
+    background:#6b21a8;
+}
+
+.certificado{
+    background:white;
+    border:12px solid #7e22ce;
+    padding:50px;
+    text-align:center;
+    margin-top:30px;
+}
+
+.certificado h1{
+    color:#6b21a8;
+    font-size:42px;
+}
+
+.nome-certificado{
+    font-size:32px;
+    font-weight:bold;
+    margin:20px 0;
 }
 
 .hidden{
     display:none;
 }
 
-input[type="text"]{
-    width:100%;
-    padding:12px;
-    font-size:16px;
-    margin-bottom:20px;
-}
-
-.resultado{
-    text-align:center;
-    padding:20px;
-    background:#f3e5f5;
-    border-radius:8px;
-    margin-top:20px;
-}
-
-.certificado{
-    border:8px solid #8e44ad;
-    padding:40px;
-    margin-top:20px;
-    text-align:center;
-    background:white;
-}
-
-.certificado h1{
-    font-size:38px;
-}
-
-.certificado h2{
-    color:#000;
-}
-
-.certificado p{
-    line-height:1.8;
-}
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <div id="inicio">
-        <h1>Quiz Educativo - Agosto Lilás</h1>
+<h1>💜 Quiz Agosto Lilás</h1>
 
-        <p>
-            Agosto Lilás é uma campanha nacional de conscientização pelo fim da violência
-            contra a mulher. Responda ao quiz e receba seu certificado ao final.
-        </p>
+<label>Nome completo:</label>
+<input type="text" id="nomeAluno" style="width:100%;padding:10px;">
 
-        <label><strong>Nome Completo:</strong></label>
-        <input type="text" id="nome" placeholder="Digite seu nome completo">
+<br><br>
 
-        <div style="text-align:center;">
-            <button onclick="iniciarQuiz()">Iniciar Quiz</button>
-        </div>
-    </div>
+<button onclick="finalizarQuiz()">Testar Certificado</button>
 
-    <form id="quizForm" class="hidden">
-
-        <h2>Questionário</h2>
-
-        <div class="question">
-            <p>1. O que representa a campanha Agosto Lilás?</p>
-            <label><input type="radio" name="q1" value="0"> Conscientização sobre a preservação ambiental</label><br>
-            <label><input type="radio" name="q1" value="1"> Combate à violência contra a mulher</label><br>
-            <label><input type="radio" name="q1" value="0"> Campanha de vacinação</label><br>
-            <label><input type="radio" name="q1" value="0"> Incentivo à leitura</label>
-        </div>
-
-        <div class="question">
-            <p>2. Em qual mês ocorre a campanha Agosto Lilás?</p>
-            <label><input type="radio" name="q2" value="0"> Julho</label><br>
-            <label><input type="radio" name="q2" value="0"> Setembro</label><br>
-            <label><input type="radio" name="q2" value="1"> Agosto</label><br>
-            <label><input type="radio" name="q2" value="0"> Outubro</label>
-        </div>
-
-        <div class="question">
-            <p>3. A campanha Agosto Lilás foi criada para divulgar principalmente:</p>
-            <label><input type="radio" name="q3" value="1"> A Lei Maria da Penha</label><br>
-            <label><input type="radio" name="q3" value="0"> O Código de Trânsito</label><br>
-            <label><input type="radio" name="q3" value="0"> A Constituição Federal</label><br>
-            <label><input type="radio" name="q3" value="0"> A CLT</label>
-        </div>
-
-        <div class="question">
-            <p>4. Qual é um dos principais objetivos da campanha?</p>
-            <label><input type="radio" name="q4" value="0"> Incentivar o turismo</label><br>
-            <label><input type="radio" name="q4" value="0"> Promover festas populares</label><br>
-            <label><input type="radio" name="q4" value="1"> Conscientizar sobre a prevenção e combate à violência contra a mulher</label><br>
-            <label><input type="radio" name="q4" value="0"> Promover atividades esportivas</label>
-        </div>
-
-        <div class="question">
-            <p>5. A violência contra a mulher pode ocorrer:</p>
-            <label><input type="radio" name="q5" value="0"> Apenas fisicamente</label><br>
-            <label><input type="radio" name="q5" value="0"> Apenas psicologicamente</label><br>
-            <label><input type="radio" name="q5" value="0"> Apenas financeiramente</label><br>
-            <label><input type="radio" name="q5" value="1"> De diversas formas</label>
-        </div>
-
-        <div class="question">
-            <p>6. Qual canal pode ser utilizado para denúncias?</p>
-            <label><input type="radio" name="q6" value="0"> Disque 100</label><br>
-            <label><input type="radio" name="q6" value="1"> Disque 180</label><br>
-            <label><input type="radio" name="q6" value="0"> Disque 188</label><br>
-            <label><input type="radio" name="q6" value="0"> Apenas 190</label>
-        </div>
-
-        <div class="question">
-            <p>7. A Lei Maria da Penha tem como principal objetivo:</p>
-            <label><input type="radio" name="q7" value="1"> Proteger mulheres em situação de violência doméstica e familiar</label><br>
-            <label><input type="radio" name="q7" value="0"> Regular relações de trabalho</label><br>
-            <label><input type="radio" name="q7" value="0"> Promover campanhas eleitorais</label><br>
-            <label><input type="radio" name="q7" value="0"> Organizar serviços municipais</label>
-        </div>
-
-        <div class="question">
-            <p>8. Ver uma situação de violência e ignorá-la é uma atitude adequada?</p>
-            <label><input type="radio" name="q8" value="0"> Sim</label><br>
-            <label><input type="radio" name="q8" value="1"> Não</label>
-        </div>
-
-        <div class="question">
-            <p>9. Informar-se sobre os tipos de violência ajuda na prevenção?</p>
-            <label><input type="radio" name="q9" value="1"> Sim</label><br>
-            <label><input type="radio" name="q9" value="0"> Não</label>
-        </div>
-
-        <div class="question">
-            <p>10. A conscientização da sociedade contribui para:</p>
-            <label><input type="radio" name="q10" value="1"> A redução da violência</label><br>
-            <label><input type="radio" name="q10" value="0"> O aumento da violência</label><br>
-            <label><input type="radio" name="q10" value="0"> Nenhuma mudança</label><br>
-            <label><input type="radio" name="q10" value="0"> O fim das leis de proteção</label>
-        </div>
-
-        <div style="text-align:center;">
-            <button type="button" onclick="corrigirQuiz()">Finalizar Quiz</button>
-        </div>
-
-    </form>
-
-    <div id="resultado" class="hidden"></div>
+<div id="resultado"></div>
 
 </div>
 
 <script>
-let dataInicio = "";
 
-function iniciarQuiz() {
+function finalizarQuiz(){
 
-    const nome = document.getElementById("nome").value.trim();
+const nome=document.getElementById("nomeAluno").value;
 
-    if(nome === ""){
-        alert("Por favor, informe seu nome completo.");
-        return;
-    }
+document.getElementById("resultado").innerHTML=`
 
-    dataInicio = new Date().toLocaleString('pt-BR');
+<div id="certificado" class="certificado">
 
-    document.getElementById("inicio").classList.add("hidden");
-    document.getElementById("quizForm").classList.remove("hidden");
+<h1>CERTIFICADO DE PARTICIPAÇÃO</h1>
+
+<p>Certificamos que</p>
+
+<div class="nome-certificado">
+${nome}
+</div>
+
+<p>
+Concluiu com êxito o Quiz Educativo
+sobre Agosto Lilás e sua Importância.
+</p>
+
+<p>
+Turma: 3 RH
+</p>
+
+<p>
+Orientador: Ricardo Camargo
+</p>
+
+<p>
+Criadores:
+<br>
+Leonardo Santos
+<br>
+Brenda Tobias
+<br>
+Suzana Luise
+<br>
+Valentina Di Lara
+</p>
+
+<button onclick="gerarPDF()">
+📄 Baixar PDF
+</button>
+
+</div>
+`;
 }
 
-function corrigirQuiz(){
+function gerarPDF(){
 
-    let total = 0;
+const { jsPDF } = window.jspdf;
 
-    for(let i=1;i<=10;i++){
+const nome=document.getElementById("nomeAluno").value;
 
-        let resposta = document.querySelector(`input[name="q${i}"]:checked`);
+const doc=new jsPDF({
+orientation:"landscape",
+unit:"mm",
+format:"a4"
+});
 
-        if(resposta){
-            total += parseInt(resposta.value);
-        }
-    }
+doc.setDrawColor(126,34,206);
+doc.setLineWidth(2);
+doc.rect(10,10,277,190);
 
-    const percentual = total * 10;
-    const status = percentual >= 70 ? "APROVADO" : "PARTICIPANTE";
-    const nome = document.getElementById("nome").value;
-    const dataFim = new Date().toLocaleString('pt-BR');
+doc.setFontSize(28);
+doc.text(
+"CERTIFICADO DE PARTICIPAÇÃO",
+148,
+40,
+{align:"center"}
+);
 
-    document.getElementById("quizForm").classList.add("hidden");
+doc.setFontSize(18);
 
-    document.getElementById("resultado").innerHTML = `
-        <div class="resultado">
-            <h2>Resultado</h2>
-            <p><strong>${nome}</strong></p>
-            <p>Acertos: ${total}/10</p>
-            <p>Percentual: ${percentual}%</p>
-            <p><strong>${status}</strong></p>
-        </div>
+doc.text(
+"Certificamos que",
+148,
+65,
+{align:"center"}
+);
 
-        <div id="certificado" class="certificado">
+doc.setFontSize(24);
 
-            <h1>CERTIFICADO</h1>
+doc.text(
+nome,
+148,
+85,
+{align:"center"}
+);
 
-            <p>Certificamos que</p>
+doc.setFontSize(14);
 
-            <h2>${nome}</h2>
+doc.text(
+"Concluiu com êxito o Quiz Educativo sobre Agosto Lilás e sua Importância",
+148,
+110,
+{align:"center"}
+);
 
-            <p>
-            concluiu o <strong>Quiz Educativo sobre Agosto Lilás e sua Importância</strong>,
-            demonstrando conhecimento sobre a conscientização, prevenção e combate à violência contra a mulher.
-            </p>
+doc.text(
+"Turma: 3 RH",
+40,
+155
+);
 
-            <p>
-                <strong>Data de Início:</strong> ${dataInicio}<br>
-                <strong>Data de Conclusão:</strong> ${dataFim}
-            </p>
+doc.text(
+"Orientador: Ricardo Camargo",
+40,
+165
+);
 
-            <p>
-                <strong>Resultado:</strong> ${total}/10 (${percentual}%)
-            </p>
+doc.text(
+"Leonardo Santos",
+210,
+150
+);
 
-            <br>
+doc.text(
+"Brenda Tobias",
+210,
+160
+);
 
-            <p><strong>Desenvolvido por:</strong></p>
+doc.text(
+"Suzana Luise",
+210,
+170
+);
 
-            <p>
-            LEONARDO SANTOS<br>
-            BRENDA TOBIAS<br>
-            SUZANA LUISE<br>
-            VALENTINA DI LARA
-            </p>
+doc.text(
+"Valentina Di Lara",
+210,
+180
+);
 
-            <p><strong>Turma:</strong> 3 RH</p>
+doc.save(
+"Certificado_Agosto_Lilas.pdf"
+);
 
-            <p><strong>Orientador:</strong> Ricardo Camargo</p>
-
-        </div>
-
-        <br>
-
-        <div style="text-align:center;">
-            <button onclick="gerarPDF()">📄 Baixar Certificado em PDF</button>
-        </div>
-    `;
-
-    document.getElementById("resultado").classList.remove("hidden");
 }
 
-async function gerarPDF(){
-
-    const { jsPDF } = window.jspdf;
-
-    const doc = new jsPDF("landscape");
-
-    const nome = document.getElementById("nome").value;
-    const dataFim = new Date().toLocaleString('pt-BR');
-
-    doc.setFont("helvetica","bold");
-    doc.setFontSize(26);
-
-    doc.text("CERTIFICADO DE PARTICIPAÇÃO", 148, 30, {align:"center"});
-
-    doc.setFontSize(14);
-    doc.setFont("helvetica","normal");
-
-    doc.text("Certificamos que",148,55,{align:"center"});
-
-    doc.setFontSize(22);
-    doc.setFont("helvetica","bold");
-    doc.text(nome,148,75,{align:"center"});
-
-    doc.setFontSize(13);
-    doc.setFont("helvetica","normal");
-
-    doc.text(
-        "Concluiu com êxito o Quiz Educativo sobre Agosto Lilás e sua Importância.",
-        148,
-        95,
-        {align:"center"}
-    );
-
-    doc.text(
-        "Demonstrando conhecimento sobre a conscientização, prevenção e combate à violência contra a mulher.",
-        148,
-        105,
-        {align:"center"}
-    );
-
-    doc.text(`Data de Início: ${dataInicio}`,40,130);
-    doc.text(`Data de Conclusão: ${dataFim}`,40,140);
-
-    doc.text("Turma: 3 RH",40,160);
-    doc.text("Orientador: Ricardo Camargo",40,170);
-
-    doc.text("Criadores:",220,145);
-
-    doc.text("Leonardo Santos",220,155);
-    doc.text("Brenda Tobias",220,165);
-    doc.text("Suzana Luise",220,175);
-    doc.text("Valentina Di Lara",220,185);
-
-    doc.save(`Certificado_${nome.replace(/\s+/g,'_')}.pdf`);
-}
 </script>
 
 </body>
